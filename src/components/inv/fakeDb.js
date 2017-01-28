@@ -4,6 +4,7 @@ const productList = [
     product_name: "nathan's 8in",
     location: "wieners",
     quantity: 6,
+    active: false,
     supplier_name: 'GFS'
   },
   {
@@ -11,6 +12,7 @@ const productList = [
     product_name: "Swt pto fry",
     location: "wieners",
     quantity: 20,
+    active: true,
     supplier_name: 'GFS'
   },
   {
@@ -18,6 +20,7 @@ const productList = [
     product_name: "ginger carrots",
     location: "wieners",
     quantity: 8,
+    active: false,
     supplier_name: 'HQ'
   },
   {
@@ -25,6 +28,7 @@ const productList = [
     product_name: "special sauce",
     location: "wieners",
     quantity: 3,
+    active: false,
     supplier_name: 'HQ'
   },
   {
@@ -32,6 +36,7 @@ const productList = [
     product_name: "french fry",
     location: "wieners",
     quantity: 14,
+    active: true,
     supplier_name: 'GFS'
   },
   {
@@ -39,6 +44,7 @@ const productList = [
     product_name: "liege dough",
     location: "waffleton",
     quantity: 14,
+    active: true,
     supplier_name: 'HQ'
   },
   {
@@ -46,6 +52,7 @@ const productList = [
     product_name: "1L Wh Cream",
     location: "waffleton",
     quantity: 5,
+    active: true,
     supplier_name: 'GFS'
   },
   {
@@ -53,6 +60,7 @@ const productList = [
     product_name: "2lb strawberry",
     location: "waffleton",
     quantity: 7,
+    active: false,
     supplier_name: 'GFS'
   },
   {
@@ -60,6 +68,7 @@ const productList = [
     product_name: "pearl sugar",
     location: "hq",
     quantity: 23,
+    active: true,
     supplier_name: 'waffle pantry'
   },
   {
@@ -67,6 +76,7 @@ const productList = [
     product_name: "50lb carrots",
     location: "hq",
     quantity: 1,
+    active: false,
     supplier_name: 'RCWC'
   }
 ]

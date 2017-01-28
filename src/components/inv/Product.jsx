@@ -2,29 +2,43 @@ import React from 'react'
 import {Link} from 'react-dom'
 
 
-const updateQuantity = () => {
 
-}
 
 class Product extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      quantity: this.props.quantity
+    }
+    this.updateQuantity = this.updateQuantity.bind(this)
   }
 
   componentDidMount() {
   }
 
+updateQuantity() {
+  let v = document.getElementById(this.props.name).value
+  console.log(v);
+  this.setState({
+    quantity: v
+  })
+}
+
   render () {
     return (
-      <div>
-        <p>{this.props.name} quantity: {this.props.quantity}</p>
+      <div className="product-item">
+        <p>{this.props.name} quantity: {this.state.quantity}</p>
         <form className="inv-input">
           <input
             type="number"
             name="quantity"
-            min="0"/>
-            <button className="btn btn-danger" type="button" onClick={updateQuantity()}>submit</button>
+            min="0"
+            placeholder="current #"
+            id={this.props.name}
+          />
+            {' '}
+            <button className="btn btn-danger" type="button" onClick={this.updateQuantity}>update</button>
         </form>
       </div>
     )
