@@ -28,7 +28,7 @@ updateQuantity() {
   render () {
     return (
       <div className="product-item">
-        <p>{this.props.name} quantity: {this.state.quantity}</p>
+        <p>{this.props.name} : {this.state.quantity}</p>
         <form className="inv-input">
           <input
             type="number"

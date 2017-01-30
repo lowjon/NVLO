@@ -1,23 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
-const crud =  require('./nvloCtrl.js')
+const productsCtrl =  require('./nvloCtrl.js')
 
-const app = express()
+const app = module.exports = express()
 
 const port = 3003
 
 app.use(express.static('src'))
 app.use(bodyParser.json())
 
-app.get('/api/inventory:location', crud.Read)
+app.get('/api/inventory:location', productsCtrl.Read)
 
-app.post('/api/inventory/:product', (req, res, next) => {
+app.post('/api/inventory:location/new_item', productsCtrl.NewProduct)
+app.post('/api/inventory/:product', productsCtrl.Create)
 
-})
-app.post('/api/inventory/:quantity', crud.UpdateQuantity)
+app.put('/api/inventory/:product_id', productsCtrl.UpdateQuantity)
 
-
+app.delete('/api/inventory/product', productsCtrl.Destroy)
 
 
 app.listen(port, function () {

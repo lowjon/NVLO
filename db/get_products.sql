@@ -1,1 +1,2 @@
-SELECT * FROM products;
+SELECT * FROM products
+where location = $1;
