@@ -1,21 +1,36 @@
+//dependencies first
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
-const productsCtrl =  require('./nvloCtrl.js')
+const massive = require('massive')
+const db = massive.connectSync({
+  connectionString: 'postgres://postgres:postgres@localhost/NVLO'
+})
 
+// then set up the app
 const app = module.exports = express()
 
-const port = 3003
+app.set('db', db)
 
-app.use(express.static('src'))
+
+const port = 3000
+
+//middlewares
+
+app.use(express.static(__dirname + '/build'))
 app.use(bodyParser.json())
 
-app.get('/api/inventory:location', productsCtrl.Read)
+//controllers
+const productsCtrl =  require('./nvloCtrl.js')
+
+//endpoints
+app.get('/api/getInventory/:location', productsCtrl.Read)
 
 app.post('/api/inventory:location/new_item', productsCtrl.NewProduct)
 app.post('/api/inventory/:product', productsCtrl.Create)
 
-app.put('/api/inventory/:product_id', productsCtrl.UpdateQuantity)
+app.update('/api/inventory/:product_id', productsCtrl.UpdateQuantity)
 
 app.delete('/api/inventory/product', productsCtrl.Destroy)
 

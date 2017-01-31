@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "production": "webpack -p",
     "start": "node devServer.js",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack -p",
+    "watch": "webpack --watch"
   },
   "author": "Jon Low",
   "license": "ISC",

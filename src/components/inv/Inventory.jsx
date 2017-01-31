@@ -4,56 +4,77 @@ import NewProduct from './NewProduct.jsx'
 import helpers from './invHelpers.js'
 import axios from 'axios'
 
-import productList from './fakeDb.js'
+// import productList from './fakeDb.js'
 import SearchBar from './SearchBar.jsx'
 
 const submitAll = () => {
 
 }
-
 class Inventory extends React.Component {
 
 
-  //constructor(props){
-  // super(props)
-  // axios.get(`localhost:8080/api/getInventory/${this.props.location.query.location}`)
-  // .then((res)=> {
-  //   console.log(res);
-  // })
-  // .catch((err)=>{
-  //   console.log('this is your problem:' + err);
-  // })
-  // this.state = {
-  //
-  // }
-  //}
-constructor(props) {
+  constructor(props){
   super(props)
+
+
+  this.state = {
+    productList:[]
+  }
+  }
+// constructor(props) {
+//   super(props)
   // this.state = {
   //   quantity: 0
   //
   // }
   // this.handleChange = this.handleChange.bind(this)
   // this.handleSingleSubmit = this.handleSingleSubmit.bind(this)
-}
+// }
 
 
 
-  componentWillMount(){
-    //call get products with the query passed in
-    //do something
-    // this.setState();
-    console.log(this.props);
-  }
+  // componentWillMount(){
+  //   //call get products with the query passed in
+  //   //do something
+  //   // this.setState();
+  //   console.log(this.props);
+  // }
 
   renderProducts () {
-    return productList.map(product => {
-    //only displays products that are at the query location and are currently active
-      if(product.location === this.props.location.query.location){
-        console.log(product.quantity);
-        return (<Product key={product.product_id} name={product.product_name} quantity={product.quantity}/>)
-      }
+
+    if(this.state.productList.length) {
+      return this.state.productList.map(product => {
+      //only displays products that are at the query location and are currently active
+
+
+          return (
+            <Product
+            key={product.product_id}
+            name={product.product_name}
+            quantity={product.quantity}
+            id={product.product_id} />
+                )
+
+      })
+    }
+
+  }
+
+  componentWillMount() {
+    console.log('component will mount')
+    console.log(this.props.location.query.location);
+    axios.get(`/api/getInventory/${this.props.location.query.location}`)
+    .then((res) => {
+      console.log('get from db', res.data)
+      this.setState({productList:res.data})
     })
+    .catch((err)=>{
+      console.log('this is your problem:' + err);
+    })
+  }
+
+  componentWillUnmount(){
+    console.log('unmounted');
   }
 
 
@@ -64,7 +85,7 @@ constructor(props) {
 
         {this.renderProducts()}
 
-        <button onClick={submitAll()} className="btn btn-success submit-all" type="button">Submit All</button>
+        {/* <button onClick={submitAll()} className="btn btn-success submit-all" type="button">Submit All</button> */}
 
         <NewProduct />
 
@@ -72,13 +93,7 @@ constructor(props) {
     )
   }
 
-  componentDidMount() {
-    console.log('component did mount')
-  }
 
-  componentWillUnmount(){
-    console.log('unmounted');
-  }
 
 }
 

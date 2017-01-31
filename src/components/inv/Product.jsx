@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-dom'
+import axios from 'axios'
 
 
 
@@ -9,7 +10,8 @@ class Product extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      quantity: this.props.quantity
+      quantity: this.props.quantity,
+      product_id: this.props.id
     }
     this.updateQuantity = this.updateQuantity.bind(this)
   }
@@ -19,7 +21,10 @@ class Product extends React.Component {
 
 updateQuantity() {
   let v = document.getElementById(this.props.name).value
+  let itemId = this.state.product_id
   console.log(v);
+  console.log(this.state.product_id);
+  axios.update(`/api/inventory/${itemId}`, {quantity: v})
   this.setState({
     quantity: v
   })

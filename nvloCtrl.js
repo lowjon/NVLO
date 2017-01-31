@@ -1,8 +1,5 @@
-const massive = require('massive')
-
-const db = massive.connectSync({
-  connectionString: 'postgres://postgres:postgres@localhost/NVLO'
-})
+const app = require('./server.js');
+const db = app.get('db')
 
 
 const productsCtrl = {
@@ -11,8 +8,8 @@ const productsCtrl = {
   },
   Read: (req, res) => {
     // this is broken, need to get the location query from the url
-    console.log('here', this.params);
-    db.get_products([data.query.location], (err, products) => {
+    console.log('here', req.params);
+    db.get_products([req.params.location], (err, products) => {
       if (err){
         console.error(err)
       } else {
@@ -22,11 +19,12 @@ const productsCtrl = {
   },
   NewProduct: (req, res) => {
     let prod = req.body
-    db.new_product([prod.name, prod.location, prod.quant, prod.supplier], (err, products) => {
+    db.new_product([prod.name, prod.location, prod.quant, prod.supplier], (err, productList) => {
       if (err){
         console.error(err)
       } else {
-        res.send(products)
+        console.log(productList);
+        res.send(productList)
       }
     })
     //

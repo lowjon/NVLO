@@ -4,11 +4,12 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const jQuery = new webpack.ProvidePlugin({jQuery: 'jquery', $: 'jquery', jquery: 'jquery'});
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //common config for both dev and prod builds
 const common = {
     output: {
-        path: path.join(__dirname, './build'),
+        path: 'build',
         filename: 'bundle.js'
     },
     module: {
@@ -46,7 +47,7 @@ const common = {
     }
 };
 
-//config for dev server
+// config for dev server
 let dev = {
     entry: [
         'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
@@ -54,10 +55,12 @@ let dev = {
         path.resolve('./src/index.js')
     ],
     output: {
-        publicPath: 'http://localhost:3000/build/'
+        publicPath: 'http://localhost:3000/'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(), jQuery
+        new webpack.HotModuleReplacementPlugin(), jQuery, new HtmlWebpackPlugin({
+          template:'./src/index.html'
+        })
     ],
     module: {
         rules: [
@@ -76,11 +79,14 @@ let dev = {
 let prod = {
     entry: path.resolve('./src/index.js'),
     output: {
-        publicPath: './build/'
+        publicPath: '/'
     },
     plugins: [
         jQuery,
-        new webpack.optimize.UglifyJsPlugin({sourceMap: false, mangle: true, compress: true})
+        new webpack.optimize.UglifyJsPlugin({sourceMap: false, mangle: true, compress: true}),
+        new HtmlWebpackPlugin({
+          template:'./src/index.html'
+        })
     ],
     module: {
         rules: [
@@ -95,13 +101,15 @@ let prod = {
 };
 
 let config;
-
 switch (process.env.npm_lifecycle_event) {
     case 'build':
         config = merge(prod, common);
         break;
     case 'start':
         config = merge(dev, common);
+        break;
+    default:
+    config = merge(prod, common);
 }
 
 module.exports = config;
