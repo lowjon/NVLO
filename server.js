@@ -27,14 +27,16 @@ const productsCtrl =  require('./nvloCtrl.js')
 //endpoints
 app.get('/api/getInventory/:location', productsCtrl.Read)
 
-app.post('/api/inventory:location/new_item', productsCtrl.NewProduct)
-app.post('/api/inventory/:product', productsCtrl.Create)
+app.put('/api/inventory/new_item', productsCtrl.NewProduct)
+// app.post('/api/inventory/:product', productsCtrl.Create)
 
-app.update('/api/inventory/:product_id', productsCtrl.UpdateQuantity)
+app.put('/api/inventory/:product_id', productsCtrl.UpdateQuantity)
 
 app.delete('/api/inventory/product', productsCtrl.Destroy)
 
-
+app.get('*', (req,res)=>{
+  res.sendFile(`${__dirname}/build/index.html`)
+})
 app.listen(port, function () {
   console.log('listening at port ' + port);
 })

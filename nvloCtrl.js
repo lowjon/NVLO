@@ -19,7 +19,7 @@ const productsCtrl = {
   },
   NewProduct: (req, res) => {
     let prod = req.body
-    db.new_product([prod.name, prod.location, prod.quant, prod.supplier], (err, productList) => {
+    db.new_product([prod.name, prod.location, prod.supplier], (err, productList) => {
       if (err){
         console.error(err)
       } else {

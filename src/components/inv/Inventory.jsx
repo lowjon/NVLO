@@ -80,10 +80,12 @@ class Inventory extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="inventory-shell">
         <h1>Welcome to the Inventory view!</h1>
 
+        <div className='product-bundle'>
         {this.renderProducts()}
+        </div>
 
         {/* <button onClick={submitAll()} className="btn btn-success submit-all" type="button">Submit All</button> */}
 
