@@ -30,8 +30,7 @@ class Product extends React.Component {
         return (
             <ul className="list-group">
                 <li className="list-group-item product-item">
-                    <p>{this.props.name}
-                        : {this.state.quantity}</p>
+                    <p>{this.props.name} <span className="badge badge-primary">{this.state.quantity}</span></p>
                     <form className="inv-input">
                         <input type="number" name="quantity" min="0" placeholder="current #" id={this.props.name}/> {' '}
                         <button className="btn btn-danger" type="button" onClick={this.updateQuantity}>update</button>

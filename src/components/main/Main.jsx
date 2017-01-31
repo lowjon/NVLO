@@ -5,7 +5,7 @@ import './main.scss';
 class Main extends React.Component {
   render () {
     return (
-      <div className="main-container jumbotron">
+      <div className="jumbotron main-container">
         <Header />
         {this.props.children}
       </div>

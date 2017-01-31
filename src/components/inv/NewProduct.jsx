@@ -21,7 +21,7 @@ class NewProduct extends React.Component {
             location: this.state.location,
             supplier: this.state.theSupplier
         }).then(() => {
-          console.log('thats nice');
+            console.log('thats nice');
         })
     };
 
@@ -33,13 +33,13 @@ class NewProduct extends React.Component {
 
         console.log(this.state);
 
-
     }
 
     render() {
         return (
-            <form>
+            <form className="new-item">
                 <input name='name' onChange={this.handleChange} type="text" placeholder="Product name"/> {' '}
+
                 <input name='location' onChange={this.handleChange} type="text" placeholder="Location"/> {' '}
                 <input name='theSupplier' onChange={this.handleChange} type="text" placeholder="Supplier"/> {' '}
                 <button onClick={this.addInvItem} className="btn btn-primary">Add Item</button>

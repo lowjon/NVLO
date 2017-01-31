@@ -81,7 +81,7 @@ class Inventory extends React.Component {
   render () {
     return (
       <div className="inventory-shell">
-        <h1>Welcome to the Inventory view!</h1>
+        <h2>{this.props.location.query.location} inventory</h2>
 
         <div className='product-bundle'>
         {this.renderProducts()}
