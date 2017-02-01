@@ -3,18 +3,16 @@ import {Link} from 'react-router'
 
 function Home () {
   return (
-    <div>
+    <div className="jumbotron btn-group-vertical">
       <h1 className="text-center">This is Home</h1>
       <br/>
       <h3>Where you at Dawg?</h3>
 
-      <Link to='/inventory?location=wieners' className="btn btn-large btn-success buttons">Wieners</Link>
-      {/* have a click event that fires getProducts function and makes the get request from the DB */}
-
+      <Link to='/inventory?location=wieners' className="btn btn-outline-success">Wieners</Link>
       <br/>
-      <Link to="/inventory?location=waffleton" className="btn btn-large btn-danger buttons">Waffleton</Link>
+      <Link to="/inventory?location=waffleton" className="btn btn-outline-danger">Waffleton</Link>
       <br/>
-      <Link to="/inventory?location=hq" className="btn btn-large btn-primary buttons">HQ</Link>
+      <Link to="/inventory?location=hq" className="btn btn-outline-primary">HQ</Link>
 
     </div>
   )

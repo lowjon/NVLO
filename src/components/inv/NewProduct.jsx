@@ -37,12 +37,17 @@ class NewProduct extends React.Component {
 
     render() {
         return (
-            <form className="new-item">
-                <input name='name' onChange={this.handleChange} type="text" placeholder="Product name"/> {' '}
+            <form className="form-inline new-item">
+                <input name='name' onChange={this.handleChange} type="text" placeholder="Product name" required/> {' '}
 
-                <input name='location' onChange={this.handleChange} type="text" placeholder="Location"/> {' '}
-                <input name='theSupplier' onChange={this.handleChange} type="text" placeholder="Supplier"/> {' '}
-                <button onClick={this.addInvItem} className="btn btn-primary">Add Item</button>
+                <select className="form-control" name='location' onChange={this.handleChange} type="select" placeholder="Location" required>
+                  <option selected>Select Location</option>
+                  <option value="wieners">Wieners</option>
+                  <option value="waffleton">Waffleton</option>
+                  <option value="hq">HQ</option>
+                </select> {' '}
+                <input name='theSupplier' onChange={this.handleChange} type="text" placeholder="Supplier" required/> {' '}
+                <button onClick={this.addInvItem} className="btn btn-primary" required>Add Item</button>
             </form>
         )
     }

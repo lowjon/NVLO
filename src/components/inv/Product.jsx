@@ -29,10 +29,10 @@ class Product extends React.Component {
     render() {
         return (
                 <li className="list-group-item product-item">
-                    <p>{this.props.name} <span className="badge badge-success">{this.state.quantity}</span></p>
+                    <h3><span className="badge badge-info" >{this.props.name} -- {this.state.quantity}</span></h3>
                     <form className="inv-input">
                         <input type="number" name="quantity" min="0" placeholder="current #" id={this.props.name}/> {' '}
-                        <button className="btn btn-danger" type="button" onClick={this.updateQuantity}>update</button>
+                        <button className="btn btn-outline-danger" type="button" onClick={this.updateQuantity}>update</button>
                     </form>
                 </li>
 

@@ -5,9 +5,13 @@ import './main.scss';
 class Main extends React.Component {
   render () {
     return (
-      <div className="jumbotron main-container">
-        <Header />
-        {this.props.children}
+      <div className="container-fluid main-container">
+        <div className="row">
+          <div className="col-xs-12">
+          <Header />
+          {this.props.children}
+          </div>
+        </div>
       </div>
     )
   }
