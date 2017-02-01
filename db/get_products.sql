@@ -1,2 +1,2 @@
-SELECT * FROM products
-where location = $1;
+SELECT * FROM product
+where location_id = $1;

@@ -13,6 +13,17 @@ const app = module.exports = express()
 
 app.set('db', db)
 
+db.create_location_table([],(err, result)=>{
+  if (err) {
+    console.log(err);
+  }
+});
+db.create_product_table([],(err, result)=>{
+  if (err) {
+    console.log(err);
+  }
+});
+
 
 const port = 3000
 

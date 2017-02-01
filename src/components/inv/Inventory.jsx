@@ -12,27 +12,21 @@ class Inventory extends React.Component {
 
     constructor(props) {
         super(props)
-
+        let location = ''
+        if (this.props.location.query.location == 1){
+          location= 'Wieners'
+        } else if (this.props.location.query.location == 2) {
+          location= 'Waffleton'
+        } else if (this.props.location.query.location == 3) {
+          location= 'HQ'
+        }
         this.state = {
-            productList: []
+            productList: [],
+            location
         }
     }
-    // constructor(props) {
-    //   super(props)
-    // this.state = {
-    //   quantity: 0
-    //
-    // }
-    // this.handleChange = this.handleChange.bind(this)
-    // this.handleSingleSubmit = this.handleSingleSubmit.bind(this)
-    // }
 
-    // componentWillMount(){
-    //   //call get products with the query passed in
-    //   //do something
-    //   // this.setState();
-    //   console.log(this.props);
-    // }
+
 
     renderProducts() {
 
@@ -40,7 +34,7 @@ class Inventory extends React.Component {
             return this.state.productList.map(product => {
                 //only displays products that are at the query location and are currently active
 
-                return (<Product key={product.product_id} name={product.product_name} quantity={product.quantity} id={product.product_id}/>)
+                return (<Product key={product.id} name={product.name} quantity={product.quantity} id={product.id}/>)
 
             })
         }
@@ -48,8 +42,7 @@ class Inventory extends React.Component {
     }
 
     componentWillMount() {
-        console.log('component will mount')
-        console.log(this.props.location.query.location);
+        console.log(this.state.location);
         axios.get(`/api/getInventory/${this.props.location.query.location}`).then((res) => {
             console.log('get from db', res.data)
             this.setState({productList: res.data})
@@ -65,7 +58,7 @@ class Inventory extends React.Component {
     render() {
         return (
             <div className="inventory-shell">
-                <h2>{this.props.location.query.location} inventory</h2>
+                <h2>{this.state.location} inventory</h2>
 
                 <ul className='product-bundle'>
                     {this.renderProducts()}
