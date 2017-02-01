@@ -13,20 +13,18 @@ class Inventory extends React.Component {
     constructor(props) {
         super(props)
         let location = ''
-        if (this.props.location.query.location == 1){
-          location= 'Wieners'
+        if (this.props.location.query.location == 1) {
+            location = 'Wieners'
         } else if (this.props.location.query.location == 2) {
-          location= 'Waffleton'
+            location = 'Waffleton'
         } else if (this.props.location.query.location == 3) {
-          location= 'HQ'
+            location = 'HQ'
         }
         this.state = {
             productList: [],
             location
         }
     }
-
-
 
     renderProducts() {
 
@@ -57,16 +55,13 @@ class Inventory extends React.Component {
 
     render() {
         return (
-            <div className="inventory-shell">
+            <div className="jumbotron inventory-shell">
                 <h2>{this.state.location} inventory</h2>
 
                 <ul className='product-bundle'>
                     {this.renderProducts()}
+                    <li className="list-group-item"><NewProduct/></li>
                 </ul>
-
-                {/* <button onClick={submitAll()} className="btn btn-success submit-all" type="button">Submit All</button> */}
-
-                <NewProduct/>
 
             </div>
         )

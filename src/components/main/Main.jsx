@@ -5,14 +5,12 @@ import './main.scss';
 class Main extends React.Component {
   render () {
     return (
-      <div className="container-fluid main-container">
         <div className="row">
-          <div className="col-xs-12">
+          <div className="col">
           <Header />
           {this.props.children}
           </div>
         </div>
-      </div>
     )
   }
 }
