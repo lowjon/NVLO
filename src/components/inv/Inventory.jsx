@@ -1,11 +1,10 @@
 import React from 'react'
 import Product from './Product.jsx'
 import NewProduct from './NewProduct.jsx'
-import helpers from './invHelpers.js'
 import axios from 'axios'
 
 // import productList from './fakeDb.js'
-import SearchBar from './SearchBar.jsx'
+// import SearchBar from './SearchBar.jsx'
 
 const submitAll = () => {}
 class Inventory extends React.Component {
@@ -31,32 +30,27 @@ class Inventory extends React.Component {
         if (this.state.productList.length) {
             return this.state.productList.map(product => {
                 //only displays products that are at the query location and are currently active
-
                 return (<Product key={product.id} name={product.name} quantity={product.quantity} id={product.id}/>)
-
             })
         }
 
     }
 
     componentWillMount() {
-        console.log(this.state.location);
+
         axios.get(`/api/getInventory/${this.props.location.query.location}`).then((res) => {
-            console.log('get from db', res.data)
+
             this.setState({productList: res.data})
-        }).catch((err) => {
-            console.log('this is your problem:' + err);
-        })
+        }).catch((err) => {})
     }
 
-    componentWillUnmount() {
-        console.log('unmounted');
-    }
+    componentWillUnmount() {}
 
     render() {
         return (
             <div className="jumbotron inventory-shell">
-                <h2>{this.state.location} inventory</h2>
+                <h2>{this.state.location}
+                    inventory</h2>
 
                 <ul className='product-bundle'>
                     {this.renderProducts()}

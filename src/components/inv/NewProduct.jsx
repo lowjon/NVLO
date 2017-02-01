@@ -20,8 +20,6 @@ class NewProduct extends React.Component {
             name: this.state.name,
             location: this.state.location,
             supplier: this.state.theSupplier
-        }).then(() => {
-            console.log('thats nice');
         })
     };
 
@@ -30,9 +28,6 @@ class NewProduct extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-
-        console.log(this.state);
-
     }
 
     render() {

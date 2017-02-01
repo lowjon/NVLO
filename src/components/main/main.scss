@@ -45,3 +45,12 @@
 
 .product-bundle {
 }
+
+.home-animations-appear {
+  opacity: 0.01;
+}
+
+.home-animations-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}

@@ -18,10 +18,7 @@ class Product extends React.Component {
     updateQuantity() {
         let v = document.getElementById(this.props.name).value
         let itemId = this.state.product_id
-        console.log(v);
-        console.log(this.state.product_id);
         axios.put(`/api/inventory/${itemId}`, {quantity: v}).then((response) => {
-            console.log('successful post to DB');
         })
         this.setState({quantity: v})
     }

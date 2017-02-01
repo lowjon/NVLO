@@ -7,8 +7,6 @@ const productsCtrl = {
 
   },
   Read: (req, res) => {
-    // this is broken, need to get the location query from the url
-    console.log('here', req.params);
     db.get_products([req.params.location], (err, products) => {
       if (err){
         console.error(err)
@@ -23,15 +21,12 @@ const productsCtrl = {
       if (err){
         console.error(err)
       } else {
-        console.log(productList);
         res.send(productList)
       }
     })
-    //
   },
   UpdateQuantity: (req, res) => {
     //update the quantity and the date for an inventory item
-    console.log('updating quantity to: ', req.body.quantity);
     db.update_quantity([req.body.quantity, req.params.product_id], (err, response) => {
       if(err) {
         console.error(err);
