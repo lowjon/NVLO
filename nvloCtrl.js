@@ -35,15 +35,15 @@ const productsCtrl = {
       }
     })
   },
-  Destroy: (req, res) => {
-    db.delete_product([req.body.name], (err, response) => {
-      if (err) {
-        console.error(err);
-      } else {
-        res.send(response)
-      }
-    })
-  }
+  // Destroy: (req, res) => {
+  //   db.delete_product([req.body.name], (err, response) => {
+  //     if (err) {
+  //       console.error(err);
+  //     } else {
+  //       res.send(response)
+  //     }
+  //   })
+  // }
 
 }
 

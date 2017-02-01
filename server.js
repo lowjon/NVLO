@@ -43,7 +43,7 @@ app.put('/api/inventory/new_item', productsCtrl.NewProduct)
 
 app.put('/api/inventory/:product_id', productsCtrl.UpdateQuantity)
 
-app.delete('/api/inventory/product', productsCtrl.Destroy)
+// app.delete('/api/inventory/product', productsCtrl.Destroy)
 
 app.get('*', (req,res)=>{
   res.sendFile(`${__dirname}/build/index.html`)
