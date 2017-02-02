@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 const massive = require('massive')
 const db = massive.connectSync({
-  connectionString: 'postgres://postgres:postgres@localhost/NVLO'
+  connectionString: 'postgres://postgres:postgres@localhost/nvlo_db'
 })
 
 // then set up the app
@@ -25,7 +25,7 @@ db.create_product_table([],(err, result)=>{
 });
 
 
-const port = 3000
+const port = 80
 
 //middlewares
 
