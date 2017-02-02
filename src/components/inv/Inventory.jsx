@@ -48,8 +48,7 @@ class Inventory extends React.Component {
     render() {
         return (
             <div className="jumbotron inventory-shell">
-                <h2>{this.state.location}
-                    inventory</h2>
+                <h2>{this.state.location} inventory</h2>
 
                 <ul className='product-bundle'>
                     {this.renderProducts()}
