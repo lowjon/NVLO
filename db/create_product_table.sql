@@ -5,4 +5,4 @@ create table if not exists public.product (
   inv_date date,
   quantity int,
   supplier varchar(200)
-)
+);

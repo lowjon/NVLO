@@ -24,7 +24,6 @@ class Inventory extends React.Component {
             location
         }
     }
-
     renderProducts() {
 
         if (this.state.productList.length) {
