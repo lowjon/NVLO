@@ -25,7 +25,7 @@ db.create_product_table([],(err, result)=>{
 });
 
 
-const port = 80
+const port = 8080
 
 //middlewares
 
